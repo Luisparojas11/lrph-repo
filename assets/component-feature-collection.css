@@ -1,60 +1,62 @@
-.latest-products-section .product-swiper{
+.collection-products-section .product-swiper{
     overflow: hidden;
     position: relative;
 }
-.latest-products-section h2{
+.collection-products-section h2{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
 }
-.latest-products-section .swiper-wrapper a{
+.collection-products-section .swiper-wrapper a{
     text-decoration: none;
     color: #000000;
 }
-.latest-products-section .swiper-wrapper li{
+.collection-products-section .swiper-wrapper li{
     margin: 0 15px;
     border-radius: 10px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
-.latest-products-section .swiper-wrapper img{
+.collection-products-section .swiper-wrapper img{
     max-width: 100%;
     display: block;
+    height: auto;
 }
-.latest-products-section .swiper-button-prev, .latest-products-section .swiper-button-next{
+.collection-products-section .swiper-button-prev, .collection-products-section .swiper-button-next{
     color: #000000;
     z-index: 8;
 }
-.latest-products-section  .product-title{
+.collection-products-section  .product-title{
     font-size: clamp(14px, 3vw, 20px);
     font-weight: 600;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
 }
-.latest-products-section  .product-price{
+.collection-products-section  .product-price{
     font-size: 16px;
     font-weight: 400;
     text-decoration: none;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-.latest-products-section .swiper-pagination{
+.collection-products-section .swiper-pagination{
     position: relative;
     top: unset;
     bottom: 0.2rem;
+    z-index: 0;
 }
-.latest-products-section .swiper-pagination-bullet-active{
+.collection-products-section .swiper-pagination-bullet-active{
     background: #000000;
 }
 
 @media screen and (max-width: 1024px) {
-    .latest-products-section .swiper-wrapper li{
+    .collection-products-section .swiper-wrapper li{
         margin: 0 15px;
         padding: 10px;
     }
-    .latest-products-section h2{
+    .collection-products-section h2{
         margin: 10px 0;
     }
-    .latest-products-section .swiper-arrows{
+    .collection-products-section .swiper-arrows{
         display: none;
     }
 }

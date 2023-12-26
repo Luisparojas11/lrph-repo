@@ -2,13 +2,17 @@
 function handleClickMobileMenuTrigger() {
     const mobileMenu = document.querySelector('.main-header-section-menu');
     const overlayMenu = document.querySelector('.overlay_mobile_menu');
+    const body = document.querySelector('body');
     
     if (!mobileMenu.classList.contains('active')) {
       mobileMenu.classList.add('active');
       overlayMenu.classList.add('active');
+      body.classList.add('mobil-menu-open');
+      
     } else {
       mobileMenu.classList.remove('active');
       overlayMenu.classList.remove('active');
+      body.classList.remove('mobil-menu-open');
     }
 }
 
@@ -29,5 +33,3 @@ function mobileMenuShowChild(){
 if (screen.width < 1024){
     mobileMenuShowChild();
 }
-  
- 
