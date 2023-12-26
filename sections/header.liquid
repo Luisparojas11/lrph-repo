@@ -51,7 +51,7 @@
                             {% if link.links.size > 0 %}
                                 <ul class="menu-links_second_level">
                                 {% for sublink in link.links %}
-                                    <li class="menu-links_second_level-child"><a href="">{{ sublink.title }}</a></li>
+                                    <li class="menu-links_second_level-child"><a href="{{ sublink.url }}">{{ sublink.title }}</a></li>
                                 {% endfor %}
                                 </ul>
                             {% endif %}      
