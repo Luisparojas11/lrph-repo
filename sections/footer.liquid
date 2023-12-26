@@ -1,0 +1,240 @@
+{%- comment -%}
+ Esta seccion es el footer del sitio, se hace el llamado directamente en el theme.liquid , permite crear 3 tipos de bloques diferentes, para imagenes, texto y menu, para asi estructurar bien el footer
+{%- endcomment -%}
+
+{{ 'component-footer.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% liquid
+    assign title = section.settings.footer_title
+    assign facebook = section.settings.social_facebook_link
+    assign instagram = section.settings.social_instagram_link
+    assign youtube = section.settings.social_youtube_link
+    assign tiktok = section.settings.social_tiktok_link
+    assign twitter = section.settings.social_twitter_link
+    assign snaptchat = section.settings.social_snapchat_link 
+    assign pinterest = section.settings.social_pinterest_link   
+%}
+
+<div class="footer section-{{ section.id }}-padding">
+
+    {% if title != blank%}
+        <div class="footer-title">{{ title }}</div>
+    {% endif %}
+  
+    <div class="footer_container">
+        {% for block in section.blocks %}
+            <div class="footer-block">
+            {% case block.type %}
+                {% when 'text' %}
+                <div class="text-content">
+                    {{ block.settings.text }}
+                </div>
+
+                {% when 'link_list' %}
+                {% if block.settings.footer_menu %}
+                    <ul class="footer-menu">
+                    {% for item in block.settings.footer_menu.links %}
+                        <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% when 'logo' %}
+                {% if block.settings.footer_logo %}
+                {% assign logo_width = block.settings.logo_width %}
+                   
+                    {{ block.settings.footer_logo |
+                        image_url: width: logo_width |
+                        image_tag:
+                        widths: '200, 300, 500, 600, 800',
+                        class:'footer_logo',
+                        sizes: '100vw'
+                    }}
+                {% endif %}
+                <div class="social_media_container">
+                    {% if facebook != blank %}
+                        <a href="{{ facebook }}">
+                            {% render 'icon-facebook' %}
+                        </a>
+                    {% endif %}
+                    {% if instagram != blank %}
+                        <a href="{{ instagram }}">
+                            {% render 'icon-instagram' %}
+                        </a>
+                    {% endif %}
+                    {% if youtube != blank %}
+                        <a href="{{ youtube }}">
+                            {% render 'icon-youtube' %}
+                        </a>
+                    {% endif %}
+                    {% if tiktok != blank %}
+                        <a href="{{ tiktok }}">
+                            {% render 'icon-tiktok' %}
+                        </a>
+                    {% endif %}
+                    {% if twitter != blank %}
+                        <a href="{{ twitter }}">
+                            {% render 'icon-twitter' %}
+                        </a>
+                    {% endif %}
+                    {% if snaptchat != blank %}
+                        <a href="{{ snaptchat }}">
+                            {% render 'icon-snaptchat' %}
+                        </a>
+                    {% endif %}
+                    {% if pinterest != blank %}
+                        <a href="{{ pinterest }}">
+                            {% render 'icon-pinterest' %}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endcase %}
+            </div>
+        {% endfor %}
+    </div>
+    
+</div>
+
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Footer Title",
+      "id": "footer_title",
+      "default": "Footer"
+    },
+    {
+        "type": "header",
+        "content": "Vertical padding"
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 36
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "label": "Padding bottom",
+        "unit": "px",
+        "default": 36
+    },
+    {
+        "type": "header",
+        "content": "Social Media Settings"
+    },
+    {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook Link",
+        "placeholder": "Enter Facebook Link"
+    },
+    {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram Link",
+        "placeholder": "Enter Instagram Link"
+    },
+    {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube Link",
+        "placeholder": "Enter YouTube Link"
+    },
+    {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok Link",
+        "placeholder": "Enter TikTok Link"
+    },
+    {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter Link",
+        "placeholder": "Enter Twitter Link"
+    },
+    {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat Link",
+        "placeholder": "Enter Snapchat Link"
+    },
+    {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest Link",
+        "placeholder": "Enter Pinterest Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text Block",
+      "settings": [
+       {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text Content"
+       }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu Block",
+      "settings": [
+        {
+          "type": "link_list",
+          "label": "Footer Menu",
+          "id": "footer_menu"
+        }
+      ]
+    },
+    {
+      "type": "logo",
+      "name": "Logo Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Footer Logo",
+          "id": "footer_logo"
+        },
+        {
+            "type": "range",
+            "id": "logo_width",
+            "min": 100,
+            "max": 800,
+            "step": 50,
+            "unit": "px",
+            "label": "logo Width",
+            "default": 450
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,71 @@
+{
+  "current": {
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_image": "shopify:\/\/shop_images\/coffee-time-logo-187E7F85DE-seeklogo.com.png",
+          "logo_width": 110,
+          "menu": "main-menu",
+          "padding_top": 0,
+          "padding_bottom": 36
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "b84e78d6-01b1-4cbe-8b07-d8eca16e0dab": {
+            "type": "logo",
+            "settings": {
+              "footer_logo": "shopify:\/\/shop_images\/coffee-time-logo-187E7F85DE-seeklogo.com.png",
+              "logo_width": 150
+            }
+          },
+          "cf3b3145-bc5a-4ad5-bd6a-9debaf73486c": {
+            "type": "link_list",
+            "settings": {
+              "footer_menu": "footer"
+            }
+          },
+          "1ee6708e-32c1-4664-b6cd-73111f3c5ec0": {
+            "type": "link_list",
+            "settings": {
+              "footer_menu": "menu-inferior-2"
+            }
+          },
+          "7a6c7c39-f013-47cc-8d1e-e908cc588e88": {
+            "type": "text",
+            "settings": {
+              "text": "<p><strong>Direccion:<\/strong> Cartagena, Nuevo bosque Septima Etapa<br\/><br\/><strong>Telefono: <\/strong>(+57) 310-7424-058<br\/><br\/><strong>Correo:<\/strong> pedrolucho09@hotmail.com <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "b84e78d6-01b1-4cbe-8b07-d8eca16e0dab",
+          "cf3b3145-bc5a-4ad5-bd6a-9debaf73486c",
+          "1ee6708e-32c1-4664-b6cd-73111f3c5ec0",
+          "7a6c7c39-f013-47cc-8d1e-e908cc588e88"
+        ],
+        "settings": {
+          "footer_title": "",
+          "padding_top": 36,
+          "padding_bottom": 36,
+          "social_facebook_link": "#",
+          "social_instagram_link": "#",
+          "social_youtube_link": "",
+          "social_tiktok_link": "#",
+          "social_twitter_link": "#",
+          "social_snapchat_link": "",
+          "social_pinterest_link": ""
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
+  },
+  "presets": {
+    "Default": {
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{{ 'component-product.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product.js' | asset_url }}" defer="defer"></script>
+
+<div class="product-container">
+    <div class="product-images">
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+      <img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
+      <div class="thumbnail-images">
+        {% for image in product.images %}
+          <a href="{{ image.src | image_url: width: 300 }}">
+            <img src="{{ image.src | image_url: width: 650 }}" alt="{{ image.alt | escape }}">
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  
+    <div class="product-details">
+      <h1>{{ product.title }}</h1>
+  
+      <form onsubmit="return validateForm()" action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+        <div class="variant-select">
+          <label for="productSelect">Choose Variant:</label>
+          <select name="id" id="productSelect">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option value="{{ variant.id }}">
+                  {{ variant.title }} - {{ variant.price | money_with_currency }}
+                </option>
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - Sold out
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+  
+        <p class="product-price">{{ current_variant.price | money }}</p>
+  
+        <div class="quantity-section">
+          <label for="Quantity">Quantity:</label>
+          <input type="number" id="Quantity" name="quantity" value="1" min="1">
+        </div>
+
+        {% if product.tags contains 'gift-message' %}
+            <label class="checkbox-container">
+                <input type="checkbox" id="showMessageCheckbox" onchange="toggleMessageVisibility()">
+                <span id="checkboxText">Do you want to add a gift message ?</span>
+            </label>
+            <div class="gift-message-container">
+                <label for="CustomMessage">Gift Message:</label>
+                <input type="text" id="CustomMessage" name="properties[Gift Message]" value="">
+                <button class="add-button add-message" type="button" onclick="addCustomMessage(this)">Add Message</button>
+                <p id="successMessage" style="display: none;">Message added successfully!</p>
+            </div>
+        {% endif %}
+              
+        <button type="submit" name="add" id="AddToCart">Add to Cart</button>
+      </form>
+  
+      <div class="product-description">
+        {{ product.description }}
+      </div>
+    </div>
+  </div>
+  
+  
+  {% schema %}
+  {
+    "name": "featured-product",
+    "class": "featured-product",
+    "settings": [
+      
+    ],
+    "presets": [
+        {
+        "name": "Product"
+        }
+    ]
+  }
+  {% endschema %}
+  
+
+ 

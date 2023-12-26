@@ -1,0 +1,86 @@
+{
+  "sections": {
+    "featured-collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title_section": "",
+        "fontsize": 40,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "0506f8df-2a80-4c28-a9b7-7f78a541ecdc": {
+      "type": "featured-collection",
+      "settings": {
+        "title_section": "Lo ultimo",
+        "fontsize": 30,
+        "padding_top": 20,
+        "padding_bottom": 36
+      }
+    },
+    "dbd51261-60d7-4f07-97a4-3ababbea6a53": {
+      "type": "image-carousel",
+      "blocks": {
+        "1022ad45-a30e-42d9-9255-451c2a6480d0": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Cafe.jpg",
+            "image_link": "",
+            "image_width": 800
+          }
+        },
+        "24c64cb5-5760-4b7d-b1f1-523b0ba402b6": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/beneficios-del-cafe-en-grano.jpg",
+            "image_link": "",
+            "image_width": 800
+          }
+        },
+        "465b9c9d-ba3b-403a-976c-1a63b2ff5a91": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cocinillas_193495389_116293001_1706x960_049b42f4-b203-4684-8c15-d0d7808a7d52.webp",
+            "image_link": "",
+            "image_width": 800
+          }
+        },
+        "484620d5-25bd-422f-b687-fa89961aadb1": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coffee-171653_1280.jpg",
+            "image_link": "",
+            "image_width": 800
+          }
+        },
+        "3fd16820-9ca6-457e-ad78-01b098cfdb85": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/depositphotos_26885089-stock-photo-coffee-cup-with-jute-bag.webp",
+            "image_link": "",
+            "image_width": 800
+          }
+        }
+      },
+      "block_order": [
+        "1022ad45-a30e-42d9-9255-451c2a6480d0",
+        "24c64cb5-5760-4b7d-b1f1-523b0ba402b6",
+        "465b9c9d-ba3b-403a-976c-1a63b2ff5a91",
+        "484620d5-25bd-422f-b687-fa89961aadb1",
+        "3fd16820-9ca6-457e-ad78-01b098cfdb85"
+      ],
+      "settings": {
+        "title": "Carrusel de imagenes",
+        "fontsize": 30,
+        "padding_top": 24,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "featured-collection",
+    "0506f8df-2a80-4c28-a9b7-7f78a541ecdc",
+    "dbd51261-60d7-4f07-97a4-3ababbea6a53"
+  ]
+}

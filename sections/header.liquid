@@ -1,0 +1,129 @@
+{%- comment -%}
+ Esta seccion es el Header del sitio, se hace el llamado directamente en el theme.liquid, permite seleccionar el menu directamente del navigation para asi poder cambiarlo a voluntad.
+{%- endcomment -%}
+
+{{ 'component-header.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'component-header.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% liquid 
+    assign logo = section.settings.logo_image
+    assign logo_width = section.settings.logo_width  
+    assign menu_links = section.settings.menu.links 
+%}
+
+<div id="main-header" class="main-header-section section-{{ section.id }}-padding">
+    <div class="overlay_mobile_menu"></div>
+    <div class="main-header-section__container">
+        <div class="main-header-section__container_logo">
+            <a href="/">
+                {{ logo |
+                    image_url: width: logo_width |
+                    image_tag:
+                      widths: '300, 600',
+                      sizes: '100vw'
+                }}
+            </a> 
+        </div>
+        <div class="main-header-section__container_menu-links">
+            <div class="main-header-section-menu-hamburguer_menu">
+                <button class="mobile_menu" onclick="handleClickMobileMenuTrigger()">
+                    {% render 'icon-hamburguer' %}
+                </button>
+            </div>
+            <div class="main-header-section-menu">
+                {% for link in menu_links %}
+                    <div class="menu-links_contain {% if link.links.size > 0 %}has-child{% endif %}">
+                        <a class="menu-links_first_level" href="{{ link.url }}">{{ link.title }}</a>
+                            {% if link.links.size > 0 %}
+                                <ul class="menu-links_second_level">
+                                {% for sublink in link.links %}
+                                    <li class="menu-links_second_level-child"><a href="">{{ sublink.title }}</a></li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}      
+                    </div>
+                {% endfor %}
+            </div>
+           
+        </div>
+        <div class="main-header-section__container_icons"> 
+            <a href="/account">{% render 'icon-account' %}</a>
+            <a href="/cart">{% render 'icon-cart' %}</a>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Logo settings"
+    },
+    {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo"
+    },
+    {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 250,
+        "step": 5,
+        "unit": "px",
+        "label": "logo Width",
+        "default": 150
+    },
+    {
+        "type": "header",
+        "content": "Menu settings"
+    },
+    {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+    },
+    {
+        "type": "header",
+        "content": "Vertical padding"
+    },
+    {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 36
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "label": "Padding bottom",
+        "unit": "px",
+        "default": 36
+    }
+  ]
+}
+{% endschema %}

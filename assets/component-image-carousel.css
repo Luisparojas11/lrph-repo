@@ -1,0 +1,11 @@
+.image-carousel-section__content .swiper img{
+    height: auto;
+    object-fit: cover;
+}
+.image-carousel-section__content h2{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+.image-carousel-section__content .swiper-button-next:after, .image-carousel-section__content .swiper-button-prev:after{
+    color: #ffffff;
+}
